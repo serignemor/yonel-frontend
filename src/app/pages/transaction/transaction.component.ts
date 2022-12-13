@@ -1,51 +1,63 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatTable, MatTableDataSource} from '@angular/material/table';
+import {DeviseService} from "../../services/devise.service";
+import {Devise} from "../../models/devise.interface";
+import {TransactionService} from "../../services/transaction.service";
+import {Transaction} from "../../models/transaction.interface";
+import {Observable} from "rxjs";
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.component.html',
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
+  // colonnes: string[] = ['id', 'date', 'montant_envoi', 'frais', 'montant_total', 'devise', 'statut', 'paiement', 'user', 'emetteur', 'recepteur', 'pays_origine', 'pays_destination'];
+
+ // liste des colonnes à afficher
+  colonnes: string[] = ['id', 'date', 'montant_total', 'devise', "montant_en_cfa", 'statut', 'emetteur'];
+
+  // objet qui contient les données à afficher dans le tableau
+  dataSource = new MatTableDataSource<Transaction>();
+
+  // selection du component enfant servant à la pagination
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+
+  constructor(private transactionService: TransactionService) {
+    this.transactionService.getAll()
+      .subscribe(transactions => {
+        this.dataSource.data = transactions;
+      });
+  }
+
+  ngOnInit(): void {
+    this.dataSource.connect();
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  ngOnInit(): void {
+  ngOnDestroy() {
+    this.dataSource.disconnect();
+  }
+
+
+  // changer la couleur de la ligne en fonction du statut
+  changeColorStatut(statut: string) {
+    switch (statut) {
+      case 'transmitted':
+        return '';
+      case 'payable':
+        return 'accent';
+      case 'paid':
+        return 'primary';
+      case 'cancelled':
+        return 'warn';
+      default:
+        return '';
+    }
   }
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
-];
