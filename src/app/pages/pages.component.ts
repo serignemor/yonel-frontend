@@ -11,7 +11,7 @@ export class PagesComponent implements OnInit {
 
   navListItems = NAV_LIST_ITEMS;
   mobileQuery: MediaQueryList;
-  private _mobileQueryListener: () => void;
+  private readonly _mobileQueryListener: () => void;
   opened = false;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {

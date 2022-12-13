@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Devise} from "../models/devise.interface";
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
@@ -9,28 +10,30 @@ import {Devise} from "../models/devise.interface";
 })
 export class DeviseService {
 
-  deviseUrl = '/api/devises';
+  // url de l'api
+  devisesUrl = `${environment.apiUrl}/devises`;
+
   constructor(private http: HttpClient) {
   }
 
-  getAllDevises(): Observable<Devise[]> {
-    return this.http.get<Devise[]>(this.deviseUrl);
+  getAll(): Observable<Devise[]> {
+    return this.http.get<Devise[]>(this.devisesUrl);
   }
 
-  getDeviseById(id: number): Observable<Devise> {
-    return this.http.get<Devise>(this.deviseUrl + '/' + id);
+  getById(id: number): Observable<Devise> {
+    return this.http.get<Devise>(`${this.devisesUrl}/${id}`);
   }
 
-  createDevise(devise: Devise): Observable<Devise> {
-    return this.http.post<Devise>(this.deviseUrl, devise);
+  create(devise: Devise): Observable<Devise> {
+    return this.http.post<Devise>(this.devisesUrl, devise);
   }
 
-  updateDevise(devise: Devise): Observable<Devise> {
-    return this.http.put<Devise>(this.deviseUrl, devise);
+  update(devise: Devise): Observable<Devise> {
+    return this.http.put<Devise>(this.devisesUrl, devise);
   }
 
-  deleteDevise(id: number): Observable<Devise> {
-    return this.http.delete<Devise>(this.deviseUrl + '/' + id);
+  delete(id: number): Observable<Devise> {
+    return this.http.delete<Devise>(`${this.devisesUrl}/${id}`);
   }
 
 }
