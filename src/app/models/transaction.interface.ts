@@ -6,7 +6,7 @@ import {User} from "./user.interface";
 
 export interface Transaction {
   id?: number;
-  date: string;
+  date: Date;
   montant_envoi: number;
   frais: number;
   montant_total: number;
@@ -15,8 +15,7 @@ export interface Transaction {
   user: User;
   emetteur: Client;
   recepteur: Client;
-  devise_origine: Devise;
-  devise_destination: Devise;
+  devise: Devise;
   pays_origine: Pays;
   pays_destination: Pays;
 }
