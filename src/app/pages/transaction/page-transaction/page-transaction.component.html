@@ -1,0 +1,124 @@
+<!-- Affichage des détails de la transaction -->
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>Transaction</mat-card-title>
+  </mat-card-header>
+
+  <button mat-button>
+    <mat-icon>edit</mat-icon>
+    <span>Modifier</span>
+  </button>
+  <button mat-button (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+    <span>Annuler</span>
+  </button>
+
+  <mat-card-content>
+    <mat-list>
+      <mat-card>
+
+        <mat-list-item>
+          <h4 mat-line>ID</h4>
+          <p mat-line>{{ transaction.id  }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Date</h4>
+          <p mat-line>{{ transaction.date | date:'dd/MM/yyyy' }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Statut</h4>
+          <p mat-line>
+            <button mat-raised-button [color]="matButtonColor">
+              {{ transaction.statut | titlecase }}
+            </button></p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Pays d'origine</h4>
+          <p mat-line>{{ transaction.pays_origine.nom }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Pays de destination</h4>
+          <p mat-line>{{ transaction.pays_destination.nom }}</p>
+        </mat-list-item>
+
+        <!-- Agent ayant effectué la transaction -->
+        <mat-list-item>
+          <h4 mat-line>Agent</h4>
+          <p mat-line>{{ transaction.user.login }}</p>
+        </mat-list-item>
+      </mat-card>
+
+      <!-- Affichage des détails sur le montant -->
+      <mat-card>
+        <mat-card-subtitle>Informations sur le montant</mat-card-subtitle>
+
+        <mat-list-item>
+          <mat-icon fontIcon="attach_money"></mat-icon>
+          <h4 mat-line>Montant Envoyé</h4>
+          <p mat-line> {{ transaction.montant_envoi | number }} </p>
+          <p mat-line>({{ transaction.montant_envoi * transaction.devise.taux_conversion | number }} CFA )</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Devise</h4>
+          <p mat-line>{{ transaction.devise.nom }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Frais</h4>
+          <p mat-line>{{ transaction.frais * transaction.devise.taux_conversion | number }} </p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Montant Total (CFA) </h4>
+          <p mat-line>{{ transaction.montant_total * transaction.devise.taux_conversion | number }} </p>
+        </mat-list-item>
+      </mat-card>
+
+      <!-- Affichage des détails de l'emetteur -->
+      <mat-card>
+        <mat-card-subtitle>Informations sur l'emetteur</mat-card-subtitle>
+
+        <mat-list-item>
+          <h4 mat-line>Nom</h4>
+          <p mat-line>{{ transaction.emetteur.nom }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Prénom</h4>
+          <p mat-line>{{ transaction.emetteur.prenom }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Téléphone</h4>
+          <p mat-line>{{ transaction.emetteur.telephone }}</p>
+        </mat-list-item>
+      </mat-card>
+
+      <!-- Affichage des détails du recepteur -->
+      <mat-card>
+        <mat-card-subtitle>Informations sur le recepteur</mat-card-subtitle>
+
+        <mat-list-item>
+          <h4 mat-line>Nom</h4>
+          <p mat-line>{{ transaction.recepteur.nom }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Prénom</h4>
+          <p mat-line>{{ transaction.recepteur.prenom }}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h4 mat-line>Téléphone</h4>
+          <p mat-line>{{ transaction.recepteur.telephone }}</p>
+        </mat-list-item>
+      </mat-card>
+
+    </mat-list>
+  </mat-card-content>
+</mat-card>

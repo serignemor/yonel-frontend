@@ -6,6 +6,7 @@ import {Devise} from "../../models/devise.interface";
 import {TransactionService} from "../../services/transaction.service";
 import {Transaction} from "../../models/transaction.interface";
 import {Observable} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.component.html',
@@ -25,7 +26,9 @@ export class TransactionComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
 
-  constructor(private transactionService: TransactionService) {
+  constructor(private transactionService: TransactionService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
     this.transactionService.getAll()
       .subscribe(transactions => {
         this.dataSource.data = transactions;
@@ -44,7 +47,6 @@ export class TransactionComponent implements OnInit, AfterViewInit {
     this.dataSource.disconnect();
   }
 
-
   // changer la couleur de la ligne en fonction du statut
   changeColorStatut(statut: string) {
     switch (statut) {
@@ -60,4 +62,17 @@ export class TransactionComponent implements OnInit, AfterViewInit {
         return '';
     }
   }
+
+  // redirection vers la page de détail de la transaction
+  goToPage(transaction: Transaction) {
+    this.router.navigate(
+      ['./', transaction.id],
+      {
+        relativeTo: this.activatedRoute,
+        state: {transaction}
+      });
+  }
+
+
+
 }

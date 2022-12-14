@@ -5,3 +5,19 @@ table {
 mat-card {
   height: 100%;
 }
+
+mat-mdc-row mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+tr:hover {
+  background: #777;
+  color: #fff;
+}
+
+tr:hover td {
+  color: #fff;
+}
+
