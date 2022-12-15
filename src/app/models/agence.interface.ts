@@ -1,7 +1,7 @@
 export interface Agence {
-  id?: number;
+  id: number;
   nom: string;
-  code?: string;
+  code: string;
   statut: string;
   balance?: number;
 }

@@ -1,8 +1,8 @@
 import {Pays} from "./pays.interface";
 
 export interface Ville {
-  id?: number;
+  id: number;
   nom: string;
-  code?: string;
+  code: string;
   pays: Pays;
 }

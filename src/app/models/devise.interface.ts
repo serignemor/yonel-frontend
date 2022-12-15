@@ -1,8 +1,8 @@
 export interface Devise {
-  id?: number;
+  id: number;
   nom: string;
-  symbole?: string;
-  taux_conversion: number;
-  taux_frais?: number;
+  symbole: string;
+  tauxConversion: number;
+  tauxFrais: number;
 }
 

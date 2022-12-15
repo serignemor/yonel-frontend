@@ -1,9 +1,11 @@
 import {SousAgence} from "./sous-agence.interface";
+import {Agence} from "./agence.interface";
 
 export interface User {
-  id?: number;
+  id: number;
   login: string;
   password: string;
-  key: string;
-  sousAgence: SousAgence;
+  isAdmin: boolean;
+  sousAgence?: SousAgence;
+  agence?: Agence;
 }

@@ -5,7 +5,7 @@ import {Paiement} from "./paiement.interface";
 import {User} from "./user.interface";
 
 export interface Transaction {
-  id?: number;
+  id: number;
   date: Date;
   montant_envoi: number;
   frais: number;
@@ -15,7 +15,8 @@ export interface Transaction {
   user: User;
   emetteur: Client;
   recepteur: Client;
-  devise: Devise;
-  pays_origine: Pays;
-  pays_destination: Pays;
+  deviseOrigine: Devise;
+  deviseDestination: Devise;
+  paysOrigine: Pays;
+  paysDestination: Pays;
 }
