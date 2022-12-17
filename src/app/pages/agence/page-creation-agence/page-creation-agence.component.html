@@ -8,9 +8,15 @@
       <mat-form-field>
         <input matInput placeholder="Nom" formControlName="nom">
       </mat-form-field>
+      <!-- champ de selection du statut de l'agence -->
       <mat-form-field>
-        <input matInput placeholder="Statut" formControlName="statut">
+        <mat-select placeholder="Statut" formControlName="statut">
+          <mat-option *ngFor="let statut of statuts" [value]="statut.value">
+            {{statut.viewValue}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
+
       <mat-form-field>
         <input matInput placeholder="Balance" formControlName="balance">
       </mat-form-field>

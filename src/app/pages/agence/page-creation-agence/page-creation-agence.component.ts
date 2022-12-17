@@ -17,6 +17,11 @@ export class PageCreationAgenceComponent implements OnInit {
     balance: ['']
   });
 
+  // listes des statuts de l'agence
+  statuts = [
+    {value: 'actif', viewValue: 'Actif'},
+    {value: 'inactif', viewValue: 'Inactif'}
+  ]
 
   constructor(private formBuilder: FormBuilder,
               private agenceService: AgenceService) { }
