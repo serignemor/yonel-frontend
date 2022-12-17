@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
 import {NAV_LIST_ITEMS} from "./nav-list-items";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-pages',
@@ -14,7 +15,11 @@ export class PagesComponent implements OnInit {
   private readonly _mobileQueryListener: () => void;
   opened = false;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+
+
+  constructor(changeDetectorRef: ChangeDetectorRef,
+              media: MediaMatcher,
+              private location: Location) {
     this.mobileQuery = media.matchMedia('(max-width: 500px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change',this._mobileQueryListener);
@@ -27,5 +32,11 @@ export class PagesComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('change',this._mobileQueryListener);
+  }
+
+  // retourner à la page précédente
+  goBack() {
+    this.location.back();
+    // return
   }
 }

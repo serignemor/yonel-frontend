@@ -3,5 +3,5 @@ export interface Agence {
   nom: string;
   code: string;
   statut: string;
-  balance?: number;
+  balance: number;
 }

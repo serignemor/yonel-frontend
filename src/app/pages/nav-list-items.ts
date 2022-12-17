@@ -5,18 +5,18 @@ export const NAV_LIST_ITEMS = [
     icon: 'receipt_long'
   },
   {
-    text: 'Paiements',
-    link: 'transaction',
-    icon: 'payments'
-  },
-  {
     text: 'Agences',
-    link: 'transaction',
+    link: 'agence',
     icon: 'apartment'
   },
   {
+    text: 'Clients',
+    link: 'client',
+    icon: 'people'
+  },
+  {
     text: 'Utilisateurs',
-    link: 'transaction',
+    link: 'user',
     icon: 'person'
   },
   {

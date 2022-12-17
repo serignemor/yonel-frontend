@@ -7,9 +7,9 @@ import {User} from "./user.interface";
 export interface Transaction {
   id: number;
   date: Date;
-  montant_envoi: number;
+  montantReception: number;
   frais: number;
-  montant_total: number;
+  montantTotal: number;
   statut: string;
   paiement?: Paiement;
   user: User;

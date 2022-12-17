@@ -21,7 +21,7 @@ import {environment} from "../environments/environment";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+   //environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     SharedModule,
   ],
   providers: [

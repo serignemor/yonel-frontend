@@ -1,4 +1,5 @@
 export interface ClientDto {
+  id?: number;
   nom: string;
   prenom: string;
   dateNaissance: Date;

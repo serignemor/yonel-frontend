@@ -1,19 +1,21 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
 
   <mat-toolbar color="primary" class="example-toolbar">
+
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
     <h1>Yonel</h1>
 
     <span class="example-spacer"></span>
 
-    <div class="row">
-      <button mat-button>
-        <span>Connexion</span>
-      </button>
+<!--    <div class="row">-->
+<!--      <button mat-button>-->
+<!--        <span>Connexion</span>-->
+<!--      </button>-->
 
-    </div>
+<!--    </div>-->
 
 
   </mat-toolbar>
@@ -33,7 +35,15 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
+
+      <!-- bouton de retour a la page precedente -->
+      <button mat-icon-button (click)="goBack()" >
+        <mat-icon>arrow_back</mat-icon>
+        Page précédente
+      </button>
+
       <router-outlet></router-outlet>
+
     </mat-sidenav-content>
 
   </mat-sidenav-container>

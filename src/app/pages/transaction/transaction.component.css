@@ -4,6 +4,7 @@ table {
 
 mat-card {
   height: 100%;
+  margin: 10px;
 }
 
 mat-mdc-row mat-mdc-cell {

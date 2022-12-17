@@ -100,10 +100,34 @@ export class InMemoryDataService implements InMemoryDbService {
 
     // base de données fictive pour les utilisateurs
     const users: User[] = [
-      {id: 1, login: 'admin', password: 'admin', isAdmin: faker.helpers.arrayElement([true, false]), sousAgence: sousAgences[0]},
-      {id: 2, login: 'user', password: 'user', isAdmin: faker.helpers.arrayElement([true, false]), sousAgence: sousAgences[1]},
-      {id: 3, login: 'user1', password: 'user1', isAdmin: faker.helpers.arrayElement([true, false]), sousAgence: sousAgences[2]},
-      {id: 4, login: 'user2', password: 'user2', isAdmin: faker.helpers.arrayElement([true, false]), sousAgence: sousAgences[3]},
+      {
+        id: 1,
+        login: 'admin',
+        password: 'admin',
+        isAdmin: faker.helpers.arrayElement([true, false]),
+        sousAgence: sousAgences[0]
+      },
+      {
+        id: 2,
+        login: 'user',
+        password: 'user',
+        isAdmin: faker.helpers.arrayElement([true, false]),
+        sousAgence: sousAgences[1]
+      },
+      {
+        id: 3,
+        login: 'user1',
+        password: 'user1',
+        isAdmin: faker.helpers.arrayElement([true, false]),
+        sousAgence: sousAgences[2]
+      },
+      {
+        id: 4,
+        login: 'user2',
+        password: 'user2',
+        isAdmin: faker.helpers.arrayElement([true, false]),
+        sousAgence: sousAgences[3]
+      },
     ];
 
     // base de données fictive pour les clients
@@ -150,9 +174,9 @@ export class InMemoryDataService implements InMemoryDbService {
     let transactions: Transaction[] = [
       {
         id: 1,
-        montant_envoi: 100000,
+        montantReception: 100000,
         frais: 2500,
-        montant_total: 102500,
+        montantTotal: 102500,
         statut: 'paid',
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -165,9 +189,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 2,
-        montant_envoi: 200000,
+        montantReception: 200000,
         frais: 5000,
-        montant_total: 205000,
+        montantTotal: 205000,
         statut: faker.helpers.arrayElement(['transmitted', 'payable']),
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -180,9 +204,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 3,
-        montant_envoi: 300000,
+        montantReception: 300000,
         frais: 7500,
-        montant_total: 307500,
+        montantTotal: 307500,
         statut: 'paid',
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -195,9 +219,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 4,
-        montant_envoi: 400000,
+        montantReception: 400000,
         frais: 10000,
-        montant_total: 410000,
+        montantTotal: 410000,
         statut: faker.helpers.arrayElement(['transmitted', 'payable', 'cancelled']),
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -210,9 +234,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 5,
-        montant_envoi: 500000,
+        montantReception: 500000,
         frais: 12500,
-        montant_total: 512500,
+        montantTotal: 512500,
         statut: faker.helpers.arrayElement(['transmitted', 'payable', 'cancelled']),
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -225,9 +249,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 6,
-        montant_envoi: 600000,
+        montantReception: 600000,
         frais: 15000,
-        montant_total: 615000,
+        montantTotal: 615000,
         statut: faker.helpers.arrayElement(['transmitted', 'payable', 'cancelled']),
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -240,9 +264,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 7,
-        montant_envoi: 700000,
+        montantReception: 700000,
         frais: 17500,
-        montant_total: 717500,
+        montantTotal: 717500,
         statut: faker.helpers.arrayElement(['transmitted', 'payable', 'cancelled']),
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -255,9 +279,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 8,
-        montant_envoi: 800000,
+        montantReception: 800000,
         frais: 20000,
-        montant_total: 820000,
+        montantTotal: 820000,
         statut: faker.helpers.arrayElement(['transmitted', 'payable', 'cancelled']),
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -270,9 +294,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 9,
-        montant_envoi: 900000,
+        montantReception: 900000,
         frais: 22500,
-        montant_total: 922500,
+        montantTotal: 922500,
         statut: faker.helpers.arrayElement(['transmitted', 'payable', 'cancelled']),
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),
@@ -285,9 +309,9 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id: 10,
-        montant_envoi: 1000000,
+        montantReception: 1000000,
         frais: 25000,
-        montant_total: 1025000,
+        montantTotal: 1025000,
         statut: faker.helpers.arrayElement(['transmitted', 'payable', 'cancelled']),
         paysOrigine: faker.helpers.arrayElement(pays),
         paysDestination: faker.helpers.arrayElement(pays),

@@ -14,13 +14,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class TransactionComponent implements OnInit, AfterViewInit {
 
-  // colonnes: string[] = ['id', 'date', 'montant_envoi', 'frais', 'montant_total', 'devise', 'statut', 'paiement', 'user', 'emetteur', 'recepteur', 'pays_origine', 'pays_destination'];
-
  // liste des colonnes à afficher
-  colonnes: string[] = ['id', 'date', 'montant_total', 'devise', "montant_en_cfa", 'statut', 'emetteur'];
+  colonnes: string[] = ['id', 'date', 'montantReception', 'deviseOrigine', 'statut', 'emetteur', 'paysOrigine', 'recepteur'];
 
   // objet qui contient les données à afficher dans le tableau
   dataSource = new MatTableDataSource<Transaction>();
+
+  // array des transactions
+  transactions: Transaction[] = [];
 
   // selection du component enfant servant à la pagination
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -28,15 +29,19 @@ export class TransactionComponent implements OnInit, AfterViewInit {
 
   constructor(private transactionService: TransactionService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
-    this.transactionService.getAll()
-      .subscribe(transactions => {
-        this.dataSource.data = transactions;
-      });
-  }
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.dataSource.connect();
+    this.transactionService.getAll()
+    .subscribe(transactions => {
+      if (transactions.length > 0) {
+        this.transactions = transactions;
+        this.dataSource.data = this.transactions;
+        this.dataSource.connect();
+        console.log({'transactions':transactions})
+      }
+    });
+
   }
 
   ngAfterViewInit() {
@@ -51,7 +56,7 @@ export class TransactionComponent implements OnInit, AfterViewInit {
   changeColorStatut(statut: string) {
     switch (statut) {
       case 'transmitted':
-        return '';
+        return "accent";
       case 'payable':
         return 'accent';
       case 'paid':
@@ -59,7 +64,7 @@ export class TransactionComponent implements OnInit, AfterViewInit {
       case 'cancelled':
         return 'warn';
       default:
-        return '';
+        return 'accent';
     }
   }
 

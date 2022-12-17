@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Devise} from "../models/devise.interface";
 import {environment} from "../../environments/environment";
+import {DeviseDto} from "../models/devise.dto";
 
 
 @Injectable({
@@ -24,15 +25,15 @@ export class DeviseService {
     return this.http.get<Devise>(`${this.devisesUrl}/${id}`);
   }
 
-  create(devise: Devise): Observable<Devise> {
+  create(devise: DeviseDto): Observable<Devise> {
     return this.http.post<Devise>(this.devisesUrl, devise);
   }
 
-  update(devise: Devise): Observable<Devise> {
+  update(devise: DeviseDto): Observable<Devise> {
     return this.http.put<Devise>(this.devisesUrl, devise);
   }
 
-  delete(id: number): Observable<Devise> {
+  delete(id: number): Observable<any> {
     return this.http.delete<Devise>(`${this.devisesUrl}/${id}`);
   }
 

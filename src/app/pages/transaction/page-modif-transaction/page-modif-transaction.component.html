@@ -1,0 +1,25 @@
+<!-- Affichage d'un formulaire de modification de transaction -->
+<mat-card >
+  <mat-card-title>Modification de la transaction</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field>
+          <mat-label>Montant à envoyer ({{ transaction.montantReception }})</mat-label>
+          <input matInput formControlName="montantReception"
+                 (input)="onChangeMontantSaisi($event)"/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Frais</mat-label>
+          <input matInput formControlName="frais"/>
+        </mat-form-field>
+      </p>
+
+        <mat-form-field>
+          <h4>Montant total </h4>
+          <input matInput formControlName="montantTotal"/>
+        </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>

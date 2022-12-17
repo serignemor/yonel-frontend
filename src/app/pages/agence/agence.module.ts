@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AgenceRoutingModule } from './agence-routing.module';
 import { AgenceComponent } from './agence.component';
+import {SharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { AgenceComponent } from './agence.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     AgenceRoutingModule
   ]
 })

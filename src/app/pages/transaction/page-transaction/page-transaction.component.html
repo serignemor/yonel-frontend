@@ -1,50 +1,61 @@
-<!-- Affichage des détails de la transaction -->
-<mat-card class="mat-elevation-z8">
+<mat-card class="wrapper" >
   <mat-card-header>
     <mat-card-title>Transaction</mat-card-title>
   </mat-card-header>
 
-  <button mat-button>
-    <mat-icon>edit</mat-icon>
-    <span>Modifier</span>
-  </button>
-  <button mat-button (click)="onCancel()">
-    <mat-icon>close</mat-icon>
-    <span>Annuler</span>
-  </button>
 
-  <mat-card-content>
-    <mat-list>
-      <mat-card>
+  <ng-template *ngIf="transaction; else noTransactionTemplate">
 
+    <!-- bouton d'annulation de transaction -->
+    <button mat-button (click)="onCancel()" color="warn">
+      <mat-icon>close</mat-icon>
+      <span>Annuler la transaction</span>
+    </button>
+
+    <!-- bouton paiement de la transaction -->
+    <button mat-button  (click)="showPayment = !showPayment" [color]="showPayment ? 'accent' : 'primary'">
+
+      <ng-template [ngIf]="!showPayment">
+        <mat-icon>payment</mat-icon>
+        <span>Payer la transaction</span>
+      </ng-template>
+
+      <ng-template [ngIf]="showPayment">
+        <mat-icon>close</mat-icon>
+        <span>Annuler le paiement</span>
+      </ng-template>
+
+    </button>
+
+    <!-- Affichagee des informations de la transaction si showPayment est false sinon on affiche #paymentTemplate-->
+    <mat-card-content class="container" *ngIf="!showPayment; else paiementTemplate">
+
+      <!-- Affichage des détails de la transaction -->
+      <mat-card class=" mat-elevation-z3">
         <mat-list-item>
           <h4 mat-line>ID</h4>
           <p mat-line>{{ transaction.id  }}</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Date</h4>
           <p mat-line>{{ transaction.date | date:'dd/MM/yyyy' }}</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Statut</h4>
           <p mat-line>
             <button mat-raised-button [color]="matButtonColor">
               {{ transaction.statut | titlecase }}
-            </button></p>
+            </button>
+          </p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Pays d'origine</h4>
-          <p mat-line>{{ transaction.pays_origine.nom }}</p>
+          <p mat-line>{{ transaction.paysOrigine.nom }}</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Pays de destination</h4>
-          <p mat-line>{{ transaction.pays_destination.nom }}</p>
+          <p mat-line>{{ transaction.paysDestination.nom }}</p>
         </mat-list-item>
-
         <!-- Agent ayant effectué la transaction -->
         <mat-list-item>
           <h4 mat-line>Agent</h4>
@@ -53,46 +64,39 @@
       </mat-card>
 
       <!-- Affichage des détails sur le montant -->
-      <mat-card>
+      <mat-card class="mat-elevation-z3">
         <mat-card-subtitle>Informations sur le montant</mat-card-subtitle>
-
         <mat-list-item>
           <mat-icon fontIcon="attach_money"></mat-icon>
           <h4 mat-line>Montant Envoyé</h4>
-          <p mat-line> {{ transaction.montant_envoi | number }} </p>
-          <p mat-line>({{ transaction.montant_envoi * transaction.devise.taux_conversion | number }} CFA )</p>
+          <p mat-line> {{ transaction.montantReception | number }} </p>
+          <p mat-line>({{ transaction.montantReception * transaction.deviseOrigine.tauxConversion | number }} CFA )</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Devise</h4>
-          <p mat-line>{{ transaction.devise.nom }}</p>
+          <p mat-line>{{ transaction.deviseOrigine.nom }}</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Frais</h4>
-          <p mat-line>{{ transaction.frais * transaction.devise.taux_conversion | number }} </p>
+          <p mat-line>{{ transaction.frais * transaction.deviseOrigine.tauxConversion | number }} </p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Montant Total (CFA) </h4>
-          <p mat-line>{{ transaction.montant_total * transaction.devise.taux_conversion | number }} </p>
+          <p mat-line>{{ transaction.montantTotal * transaction.deviseOrigine.tauxConversion | number }} </p>
         </mat-list-item>
       </mat-card>
 
       <!-- Affichage des détails de l'emetteur -->
-      <mat-card>
+      <mat-card class="mat-elevation-z3">
         <mat-card-subtitle>Informations sur l'emetteur</mat-card-subtitle>
-
         <mat-list-item>
           <h4 mat-line>Nom</h4>
           <p mat-line>{{ transaction.emetteur.nom }}</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Prénom</h4>
           <p mat-line>{{ transaction.emetteur.prenom }}</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Téléphone</h4>
           <p mat-line>{{ transaction.emetteur.telephone }}</p>
@@ -100,25 +104,71 @@
       </mat-card>
 
       <!-- Affichage des détails du recepteur -->
-      <mat-card>
+      <mat-card class="mat-elevation-z3">
         <mat-card-subtitle>Informations sur le recepteur</mat-card-subtitle>
-
         <mat-list-item>
           <h4 mat-line>Nom</h4>
           <p mat-line>{{ transaction.recepteur.nom }}</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Prénom</h4>
           <p mat-line>{{ transaction.recepteur.prenom }}</p>
         </mat-list-item>
-
         <mat-list-item>
           <h4 mat-line>Téléphone</h4>
           <p mat-line>{{ transaction.recepteur.telephone }}</p>
         </mat-list-item>
       </mat-card>
 
-    </mat-list>
-  </mat-card-content>
+    </mat-card-content>
+
+    <!-- template card du paiement -->
+    <ng-template #paiementTemplate>
+      <mat-card class="mat-elevation-z3">
+        <mat-card-subtitle>Paiement</mat-card-subtitle>
+        <mat-card-content>
+          <form [formGroup]="paymentForm" (ngSubmit)="onPay()">
+
+            <!-- champ nom complet du recepteur -->
+            <mat-form-field>
+              <input matInput placeholder="Nom complet du recepteur" formControlName="nomCompletRecepteur">
+            </mat-form-field>
+
+            <!-- champ type de piece d'identité -->
+            <mat-form-field>
+              <mat-select placeholder="Type de pièce d'identité" formControlName="typePieceIdentite">
+                <mat-option *ngFor="let typePieceIdentite of typesPieceIdentite" value="typePieceIdentite">
+                  {{ typePieceIdentite.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- champ numero de piece d'identité -->
+            <mat-form-field>
+              <input matInput placeholder="Numéro de pièce d'identité" formControlName="numeroPieceIdentite">
+            </mat-form-field>
+
+            <!-- bouton de paiement -->
+            <mat-card-actions>
+              <button mat-raised-button color="primary" type="submit">Payer</button>
+            </mat-card-actions>
+
+          </form>
+        </mat-card-content>
+
+
+      </mat-card>
+    </ng-template>
+
+  </ng-template>
+
+
+  <ng-template #noTransactionTemplate>
+    <mat-card class="mat-elevation-z3">
+      <mat-card-content>
+        <p>Aucune transaction n'a été trouvée</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+
 </mat-card>

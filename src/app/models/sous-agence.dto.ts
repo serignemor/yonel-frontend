@@ -1,4 +1,5 @@
 export interface SousAgenceDto {
+  id?: number;
   nom: string;
   code: string;
   idAgence: number;

@@ -1,13 +1,15 @@
 export interface TransactionDto {
-  montant_envoi: number;
+  id?: number;
+  date?: Date;
+  montantReception: number;
   frais: number;
-  montant_total: number;
+  montantTotal: number;
   statut: string;
   idUser: number;
   idEmetteur: number;
   idRecepteur: number;
   idDeviseOrigine: number;
   idDeviseDestination: number;
-  paysOrigine: number;
-  paysDestination: number;
+  idPaysOrigine: number;
+  idPaysDestination: number;
 }

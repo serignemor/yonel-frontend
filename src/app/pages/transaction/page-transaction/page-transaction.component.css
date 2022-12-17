@@ -1,3 +1,19 @@
-mat-card {
+mat-card-content mat-card {
     margin: 10px;
+  min-width: 500px;
 }
+.container {
+  display: flex;
+  flex-direction: row;
+  /*justify-content: space-between;*/
+  /*align-items: center;*/
+  flex-wrap: wrap;
+
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+/* affichage des elements de mat-card-content les uns apres les autres */
+
