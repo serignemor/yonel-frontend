@@ -10,6 +10,11 @@ export const NAV_LIST_ITEMS = [
     icon: 'apartment'
   },
   {
+    text: 'Sous Agences',
+    link: 'sous-agence',
+    icon: 'apartment'
+  },
+  {
     text: 'Clients',
     link: 'client',
     icon: 'people'

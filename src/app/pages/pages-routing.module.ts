@@ -28,9 +28,14 @@ const routes: Routes = [
         path: 'devise',
         loadChildren: () => import('./devise/devise.module').then(m => m.DeviseModule)
       },
+      {
+        path: 'sous-agence',
+        loadChildren: () => import('./sous-agence/sous-agence.module').then(m => m.SousAgenceModule)
+      },
 
     ]
   },
+
 
 ];
 
