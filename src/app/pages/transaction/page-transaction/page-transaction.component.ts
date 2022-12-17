@@ -15,7 +15,7 @@ import {PaiementDto} from "../../../models/paiement.dto";
 })
 export class PageTransactionComponent implements OnInit {
 
-  transaction!: Transaction;
+  transaction: Transaction = {} as Transaction;
   matButtonColor: ThemePalette | null = 'primary';
   showPayment: Boolean= false
 

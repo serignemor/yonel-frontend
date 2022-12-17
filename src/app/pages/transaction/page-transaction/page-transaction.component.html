@@ -3,8 +3,9 @@
     <mat-card-title>Transaction</mat-card-title>
   </mat-card-header>
 
+<!--  *ngIf="transaction; else noTransactionTemplate"-->
 
-  <ng-template *ngIf="transaction; else noTransactionTemplate">
+  <ng-template >
 
     <!-- bouton d'annulation de transaction -->
     <button mat-button (click)="onCancel()" color="warn">
@@ -50,16 +51,16 @@
         </mat-list-item>
         <mat-list-item>
           <h4 mat-line>Pays d'origine</h4>
-          <p mat-line>{{ transaction.paysOrigine.nom }}</p>
+          <p mat-line>{{ transaction.paysOrigine.nom || '' }}</p>
         </mat-list-item>
         <mat-list-item>
           <h4 mat-line>Pays de destination</h4>
-          <p mat-line>{{ transaction.paysDestination.nom }}</p>
+          <p mat-line>{{ transaction.paysDestination.nom || '' }}</p>
         </mat-list-item>
         <!-- Agent ayant effectué la transaction -->
         <mat-list-item>
           <h4 mat-line>Agent</h4>
-          <p mat-line>{{ transaction.user.login }}</p>
+          <p mat-line>{{ transaction.user.login || ''}}</p>
         </mat-list-item>
       </mat-card>
 
