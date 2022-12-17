@@ -3,9 +3,7 @@
     <mat-card-title>Transaction</mat-card-title>
   </mat-card-header>
 
-<!--  *ngIf="transaction; else noTransactionTemplate"-->
-
-  <ng-template >
+<div *ngIf="transaction; else noTransactionTemplate">
 
     <!-- bouton d'annulation de transaction -->
     <button mat-button (click)="onCancel()" color="warn">
@@ -161,7 +159,7 @@
       </mat-card>
     </ng-template>
 
-  </ng-template>
+  </div>
 
 
   <ng-template #noTransactionTemplate>
