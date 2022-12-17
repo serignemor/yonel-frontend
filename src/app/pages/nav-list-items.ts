@@ -24,4 +24,9 @@ export const NAV_LIST_ITEMS = [
     link: 'transaction',
     icon: 'settings'
   },
+  {
+    text: 'Devises',
+    link: 'devise',
+    icon: 'euro'
+  }
 ]

@@ -19,9 +19,9 @@ export class InMemoryDataService implements InMemoryDbService {
 
     // base de données fictive pour les devises
     const devises: Devise[] = [
-      {id: 1, nom: 'Dollars', symbole: 'USD', tauxConversion: 655.95, tauxFrais: 0.1},
-      {id: 2, nom: 'Euros', symbole: 'EUR', tauxConversion: 700, tauxFrais: 0.2},
-      {id: 3, nom: 'Francs CFA', symbole: 'XOF', tauxConversion: 1, tauxFrais: 0.3},
+      {id: 1, nom: 'Dollars', symbole: 'USD', tauxConversion: 655.95, tauxFrais: 0.1, code: 'USD'},
+      {id: 2, nom: 'Euros', symbole: 'EUR', tauxConversion: 700, tauxFrais: 0.2, code: 'EUR'},
+      {id: 3, nom: 'Francs CFA', symbole: 'XOF', tauxConversion: 1, tauxFrais: 0.3, code: 'XOF'},
     ];
 
     // base de données fictive pour les pays

@@ -49,7 +49,7 @@ export class AgenceComponent implements OnInit {
   }
 
   // redirection vers la page de creation d'une agence
-  goToCreate() {
+  onAdd() {
     this.router.navigate(['create'], {relativeTo: this.activatedRoute});
   }
 }

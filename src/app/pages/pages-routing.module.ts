@@ -7,11 +7,28 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
-      {path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
-      {path: 'transaction', loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)},
-      {path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
-      {path: 'agence', loadChildren: () => import('./agence/agence.module').then(m => m.AgenceModule)},
-      {path: '', redirectTo: 'auth', pathMatch: 'full',}
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+      },
+      {
+        path: '',
+        redirectTo: 'auth',
+        pathMatch: 'full'
+      },
+      {
+        path: 'transaction',
+        loadChildren: () => import('./transaction/transaction.module').then(m => m.TransactionModule)
+      },
+      {
+        path: 'agence',
+        loadChildren: () => import('./agence/agence.module').then(m => m.AgenceModule)
+      },
+      {
+        path: 'devise',
+        loadChildren: () => import('./devise/devise.module').then(m => m.DeviseModule)
+      },
+
     ]
   },
 
