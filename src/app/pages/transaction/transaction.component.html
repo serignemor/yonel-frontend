@@ -24,7 +24,7 @@
 
         <ng-container matColumnDef="dateEnvoi">
           <th *matHeaderCellDef mat-header-cell> Date</th>
-          <td *matCellDef="let transaction" mat-cell> {{transaction.dateEnvoi | date: 'dd/MM/yy, à HH:mm' }} </td>
+          <td *matCellDef="let transaction" mat-cell> {{transaction.dateEnvoi | date: 'dd/MM/yy à HH:mm' }} </td>
         </ng-container>
 
         <ng-container matColumnDef="montantReception">

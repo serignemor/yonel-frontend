@@ -1,1 +1,38 @@
-<p>page-creation-client works!</p>
+<!-- formulaire de creation d'agence -->
+<mat-card class="mat-elevation-z3">
+  <mat-card-header>
+    <mat-card-title>Créer un client</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field>
+        <input matInput placeholder="Nom" formControlName="nom">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Prenom" formControlName="prenom">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Date de naissance" formControlName="dateNaissance" type="date">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Lieu de naissance" formControlName="lieuNaissance">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Telephone" formControlName="telephone">
+      </mat-form-field>
+
+
+      <button mat-raised-button color="primary" type="submit">Créer</button>
+
+    </form>
+  </mat-card-content>
+</mat-card>
