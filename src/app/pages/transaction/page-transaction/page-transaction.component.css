@@ -15,5 +15,10 @@ mat-form-field{
   width: 100%;
 }
 
+.firstDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* affichage des elements de mat-card-content les uns apres les autres */
 

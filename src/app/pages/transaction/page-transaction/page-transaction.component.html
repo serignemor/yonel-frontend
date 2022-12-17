@@ -32,35 +32,53 @@
       <!-- Affichage des détails de la transaction -->
       <mat-card class=" mat-elevation-z3">
         <mat-list-item>
-          <h4 mat-line>ID</h4>
-          <p mat-line>{{ transaction.id  }}</p>
+          <div class="firstDiv">
+            <h4 mat-line>ID</h4>
+            <p mat-line>{{ transaction.id  }}</p>
+          </div>
         </mat-list-item>
+        <hr>
         <mat-list-item>
-          <h4 mat-line>Date</h4>
-          <p mat-line>{{ transaction.dateEnvoi | date:'dd/MM/yyyy' }}</p>
+          <div class="firstDiv">
+            <h4 mat-line>Date</h4>
+            <p mat-line>{{ transaction.dateEnvoi | date:'dd/MM/yyyy' }}</p>
+          </div>
         </mat-list-item>
+        <hr>
         <mat-list-item>
-          <h4 mat-line>Statut</h4>
-          <p mat-line>
-            <button mat-raised-button [color]="matButtonColor">
-              {{ transaction.statut | titlecase }}
-            </button>
-          </p>
+          <div class="firstDiv">
+            <h4 mat-line>Statut</h4>
+            <p mat-line>
+              <button mat-raised-button [color]="matButtonColor">
+                {{ transaction.statut | titlecase }}
+              </button>
+            </p>
+          </div>
         </mat-list-item>
+        <hr>
         <mat-list-item>
-          <h4 mat-line>Pays d'origine</h4>
-          <p mat-line>{{ transaction.paysOrigine.nom || '' }}</p>
+          <div class="firstDiv">
+            <h4 mat-line>Pays d'origine</h4>
+            <p mat-line>{{ transaction.paysOrigine.nom || '' }}</p>
+          </div>
         </mat-list-item>
+        <hr>
         <mat-list-item>
-          <h4 mat-line>Pays de destination</h4>
-          <p mat-line>{{ transaction.paysDestination.nom || '' }}</p>
+          <div class="firstDiv">
+            <h4 mat-line>Pays de destination</h4>
+            <p mat-line>{{ transaction.paysDestination.nom || '' }}</p>
+          </div>
         </mat-list-item>
+        <hr>
         <!-- Agent ayant effectué la transaction -->
         <mat-list-item>
-          <h4 mat-line>Agent</h4>
-          <p mat-line>{{ transaction.user.login || ''}}</p>
+          <div class="firstDiv">
+            <h4 mat-line>Agent</h4>
+            <p mat-line>{{ transaction.user.login || ''}}</p>
+          </div>
         </mat-list-item>
       </mat-card>
+      <hr>
 
       <!-- Affichage des détails sur le montant -->
       <mat-card class="mat-elevation-z3">
