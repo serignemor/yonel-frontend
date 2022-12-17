@@ -6,7 +6,7 @@ import {User} from "./user.interface";
 
 export interface Transaction {
   id: number;
-  date: Date;
+  dateEnvoi: Date;
   montantReception: number;
   frais: number;
   montantTotal: number;

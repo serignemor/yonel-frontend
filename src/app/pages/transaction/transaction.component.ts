@@ -15,7 +15,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class TransactionComponent implements OnInit, AfterViewInit {
 
  // liste des colonnes à afficher
-  colonnes: string[] = ['id', 'date', 'montantReception', 'deviseOrigine', 'statut', 'emetteur', 'paysOrigine', 'recepteur'];
+  colonnes: string[] = ['id', 'dateEnvoi', 'montantReception', 'deviseOrigine', 'statut', 'emetteur', 'paysOrigine', 'recepteur'];
 
   // objet qui contient les données à afficher dans le tableau
   dataSource = new MatTableDataSource<Transaction>();

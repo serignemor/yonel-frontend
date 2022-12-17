@@ -33,6 +33,8 @@ const routes: Routes = [
         loadChildren: () => import('./sous-agence/sous-agence.module').then(m => m.SousAgenceModule)
       },
 
+      { path: 'client', loadChildren: () => import('./client/client.module').then(m => m.ClientModule) },
+
     ]
   },
 

@@ -59,7 +59,7 @@ export class TransactionService extends GenericService {
   //   transaction.frais = transactionDto.frais;
   //   transaction.montantTotal = transactionDto.montantTotal;
   //   transaction.statut = transactionDto.statut;
-  //   transaction.date = transactionDto.date || new Date();
+  //   transaction.dateEnvoi = transactionDto.dateEnvoi || new Date();
   //   this.getById(transactionDto)
   //     .subscribe(t => {
   //       transaction.deviseOrigine = t.deviseOrigine;

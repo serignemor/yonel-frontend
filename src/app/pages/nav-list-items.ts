@@ -5,6 +5,11 @@ export const NAV_LIST_ITEMS = [
     icon: 'receipt_long'
   },
   {
+    text: 'Devises',
+    link: 'devise',
+    icon: 'euro'
+  },
+  {
     text: 'Agences',
     link: 'agence',
     icon: 'apartment'
@@ -23,15 +28,5 @@ export const NAV_LIST_ITEMS = [
     text: 'Utilisateurs',
     link: 'user',
     icon: 'person'
-  },
-  {
-    text: 'Paramêtres',
-    link: 'transaction',
-    icon: 'settings'
-  },
-  {
-    text: 'Devises',
-    link: 'devise',
-    icon: 'euro'
   }
 ]
