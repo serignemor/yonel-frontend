@@ -50,6 +50,7 @@ export class PageTransactionComponent implements OnInit {
 
         this.transactionService.getById(Number(id))
           .subscribe(transaction => {
+            console.log(transaction)
             this.changeTransactionStatut(transaction);
           });
       });
