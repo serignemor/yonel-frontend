@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PageCreationAgenceRoutingModule } from './page-creation-agence-routing.module';
 import { PageCreationAgenceComponent } from './page-creation-agence.component';
+import {SharedModule} from "../../../shared/shared.module";
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { PageCreationAgenceComponent } from './page-creation-agence.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     PageCreationAgenceRoutingModule
   ]
 })

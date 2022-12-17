@@ -42,16 +42,10 @@ export class InMemoryDataService implements InMemoryDbService {
 
     // base de données fictive pour les agences
     const agences: Agence[] = [
-      {
-        id: 1,
-        nom: 'Ecobank',
-        code: 'ECBNK',
-        statut: faker.helpers.arrayElement(['actif', 'inactif']),
-        balance: 1000000,
-      },
-      {id: 2, nom: 'BICIG', code: 'BICIG', statut: faker.helpers.arrayElement(['actif', 'inactif']), balance: 2000000,},
-      {id: 3, nom: 'BCEAO', code: 'BCEAO', statut: faker.helpers.arrayElement(['actif', 'inactif']), balance: 3000000,},
-      {id: 4, nom: 'BNA', code: 'BNA', statut: faker.helpers.arrayElement(['actif', 'inactif']), balance: 4000000,},
+      {id: 1, nom: 'Ecobank', statut: faker.helpers.arrayElement(['actif', 'inactif']), balance: 1000000,},
+      {id: 2, nom: 'BICIG', statut: faker.helpers.arrayElement(['actif', 'inactif']), balance: 2000000,},
+      {id: 3, nom: 'BCEAO', statut: faker.helpers.arrayElement(['actif', 'inactif']), balance: 3000000,},
+      {id: 4, nom: 'BNA', statut: faker.helpers.arrayElement(['actif', 'inactif']), balance: 4000000,},
     ];
 
     // base de données fictive pour les sous-agences
@@ -64,7 +58,7 @@ export class InMemoryDataService implements InMemoryDbService {
         adresse: 'Abidjan',
         ville: villes[0],
         telephone: faker.phone.number(),
-        email: faker.internet.email(agences[0].code)
+        email: faker.internet.email()
       },
       {
         id: 2,
@@ -74,7 +68,7 @@ export class InMemoryDataService implements InMemoryDbService {
         adresse: 'Dakar',
         ville: villes[1],
         telephone: faker.phone.number(),
-        email: faker.internet.email(agences[1].code)
+        email: faker.internet.email()
       },
       {
         id: 3,
@@ -84,7 +78,7 @@ export class InMemoryDataService implements InMemoryDbService {
         adresse: 'Paris',
         ville: villes[2],
         telephone: faker.phone.number(),
-        email: faker.internet.email(agences[2].code)
+        email: faker.internet.email()
       },
       {
         id: 4,
@@ -94,7 +88,7 @@ export class InMemoryDataService implements InMemoryDbService {
         adresse: 'New York',
         ville: villes[3],
         telephone: faker.phone.number(),
-        email: faker.internet.email(agences[3].code)
+        email: faker.internet.email()
       },
     ];
 
